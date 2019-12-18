@@ -1,0 +1,59 @@
+import java.util.Scanner;
+
+/**
+ * This class will calculate the dimensions of the cone.
+ *
+ * @author (Rafee Ahmed)
+ * @version (02/17/19)
+ */
+public class ConeCalculator {
+    
+   /**
+    * coneRadius is radius input
+    * baseHeight is height input from center-base
+    * slantHeight is the height of cone from slant side 
+    */
+    public static void coneCalc() {
+    
+        Scanner scan = new Scanner(System.in);
+        
+        System.out.println("Welcome to Cone Calculator!");
+        
+        //radius input
+        System.out.println("Enter the radius: ");
+        float coneRadius = scan.nextFloat();
+        
+        //base height input
+        System.out.println("Enter the height: ");
+        float baseHeight = scan.nextFloat();
+                
+        //slant height
+        float slantHeight = (float) Math.sqrt((Math.pow(coneRadius, 2) 
+                                + Math.pow(baseHeight, 2)));
+                                
+        System.out.println("");
+        
+        //if inputs are zero or less than zero, only an error will print
+        if (coneRadius <= 0 || baseHeight <= 0)
+        {
+            System.out.println("Error: The radius and height " 
+                                 + "must both be greater than 0.");
+        }
+                       
+        else if (coneRadius > 0 || baseHeight > 0)
+        {
+                
+            double latSurfArea = Math.PI * coneRadius * slantHeight;
+            System.out.printf(("Lateral Surface Area: %.4f%n"), latSurfArea);
+        
+            double totalSurfArea = Math.PI * coneRadius * (coneRadius 
+                                        + slantHeight);
+            System.out.printf(("Total Surface Area: %.3f%n"), totalSurfArea);
+        
+            double volume = Math.PI * Math.pow(coneRadius, 2) * baseHeight / 3;
+            System.out.printf(("Volume: %.2f"), volume);
+        }
+        
+    }
+           
+}
